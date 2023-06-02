@@ -1,0 +1,23 @@
+.listMovies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+  align-items: center;
+}
+
+.itemMovie {
+  width: 400px;
+  height: 300px;
+  box-shadow: black 1px 1px 1px 1px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.cardMovie {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}

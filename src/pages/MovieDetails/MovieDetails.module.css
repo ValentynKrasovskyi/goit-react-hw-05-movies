@@ -1,0 +1,51 @@
+.general {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.movieDetails {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.movie {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  border-bottom: 2px solid black;
+}
+
+.movieDescription {
+  padding: 30px;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.movieDescription > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.overView {
+  width: 70%;
+}
+
+.movieAdd {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.movie > img {
+  height: 500px;
+}
