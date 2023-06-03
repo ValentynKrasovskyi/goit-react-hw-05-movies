@@ -7,44 +7,52 @@ import css from "./Movie.module.css"
 
 function Movies (){
 
-  const [searchMovies, setSearchMovies] = useState([]);
-  const [searchQuery, setSearchQuery] = useState('');
-  const [searchParams, setSearchParams] = useSearchParams();
+const [searchMovies, setSearchMovies] = useState([]);
+const [searchQuery, setSearchQuery] = useState('');
+const [searchParams, setSearchParams] = useSearchParams();
 
-  const movieToSearch = searchParams.get('query') ?? '';
+const movieToSearch = searchParams.get('query') ?? '';
 
-  useEffect(() => {
-    if (!movieToSearch) return;
+useEffect(() => {
+if (!movieToSearch) {
+setSearchQuery('');
+setSearchMovies([]);
+return;
+}
 
-    setSearchQuery(movieToSearch);
-    getMovieByQuery(movieToSearch).then(({ results }) => {      
-      setSearchMovies(results);
-    });
-  }, [movieToSearch]);
 
-  const onFormSubmit = event => {
-    event.preventDefault();
-    setSearchParams({ query: searchQuery });
-    
-  };
+setSearchQuery(movieToSearch);
+getMovieByQuery(movieToSearch).then(({ results }) => {      
+  setSearchMovies(results);
+});
+}, [movieToSearch]);
 
-    return ( 
-    <div className={css.formStyle}>
-        <form onSubmit={onFormSubmit} className={css.form}>
-        <input
-            className={css.SearchFormInput}
-            type="text"
-            autoComplete="off"
-            name="searchMovie"
-            autoFocus
-            placeholder="Search movie"
-            onChange={e => setSearchQuery(e.target.value)}
-          /> 
-          <button type="submit"> Find </button>
-        </form>
-        <MovieList movies = {searchMovies}/>
-    </div>
-    )
-} 
+const onFormSubmit = event => {
+event.preventDefault();
+if (searchQuery.trim() === '') {
+return;
+}
+setSearchParams({ query: searchQuery });
+};
+
+return (
+<div className={css.formStyle}>
+<form onSubmit={onFormSubmit} className={css.form}>
+<input
+className={css.SearchFormInput}
+type="text"
+autoComplete="off"
+name="searchMovie"
+autoFocus
+placeholder="Search movie"
+value={searchQuery}
+onChange={e => setSearchQuery(e.target.value)}
+/>
+<button type="submit"> Find </button>
+</form>
+<MovieList movies={searchMovies}/>
+</div>
+)
+}
 
 export default Movies;
